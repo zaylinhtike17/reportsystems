@@ -75,7 +75,7 @@ if(!empty($_POST["submit"])) {
 <body>     
 
   <div class="container box">  
-   <form action="login.php" method="post" id="frmLogin"> 
+   <form action="" method="post" id="frmLogin"> 
     <h3 align="center">Login</h3><br />
     <div class="text-danger"><?php if(isset($message)) { echo $message; } ?></div>  
     <div class="form-group">  
@@ -88,7 +88,8 @@ if(!empty($_POST["submit"])) {
    </div>  
    <div class="form-group">  
      <input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />  
-     <label for="remember-me">Remember me</label>  
+     <label for="remember-me">Remember me</label><br>
+     <a href="forget-password.php" name="forgetpassword" style="color: blue; font-size: 14px;">Forget Password</a> <br> 
    </div>  
    <div class="form-group">  
      <div><input type="submit" name="login" value="Login" class="btn btn-success"></span></div>  

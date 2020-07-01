@@ -33,7 +33,7 @@ if($_POST)
 		$mail->From = "capital.zaylinhtike@gmail.com";
 		$mail->FromName = "zay";
 
-		$mail->addAddress($row["email"]);
+		$mail->addAddress($row['email']);
 
 		$mail->isHTML(true);
 

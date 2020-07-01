@@ -77,20 +77,30 @@ if($_GET['token'] && $_GET['user_id'])
     <input type="hidden" name="email" value="<?php echo $row['email'];?>">
     <div class="form-group">  
      <label for="password">Password</label>  
-     <input name="password" type="password"class="form-control" required="required" />   
+     <input name="password" type="password"class="form-control" id="txtPassword" required="required" />   
     </div> 
     <div class="form-group">  
-     <label for="password">Password</label>  
-     <input name="password" type="password"class="form-control" required="required" />   
+     <label for="password">Confirm Password</label>  
+     <input name="password" type="password"class="form-control" id="txtConfirmPassword" required="required" />   
     </div>
-    <input type="submit" name="submit_password" class="btn btn-success" value="Change Password">
+    <input type="submit" id="btnSubmit" name="submit_password" class="btn btn-success" value="Change Password" onClick="return Validate()">
     </form>
 
 </div>  
 </body>  
-</html>
-   
 
+    <script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</html>
     <?php
   }
  
