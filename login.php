@@ -92,7 +92,7 @@ else{
 
 }else{
 
-  $message = "Both are Required Fields";
+  $message = "Both Fields are required ";
 
 }
 
@@ -136,7 +136,7 @@ else{
    <div class="form-group">  
      <input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />  
      <label for="remember-me">Remember me</label><br>
-     <a href="forget-password.php" name="forgetpassword" style="color: blue; font-size: 14px;">Forget Password</a> <br> 
+     <a href="forget-password.php" name="forgetpassword" style="color: blue; font-size: 14px; text-decoration:none; ">Forget Password</a> <br> 
    </div>  
    <div class="form-group">  
      <div><input type="submit" name="login" value="Login" class="btn btn-success"></span></div>  

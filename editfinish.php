@@ -57,52 +57,7 @@ if(!empty($_POST["submit"])) {
 </div>
 </body>
 </html>
-<?php } else {?>
-	<html>  
-<head>  
-  <title>REPORT SYSTEM</title>  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
-  <style>  
-    body  
-    {  
-     margin:150px;  
-     padding:0;  
-     background-color:#f1f1f1;  
-   }  
-   .box  
-   {  
-     width:500px;  
-     padding:20px;  
-     background-color:#fff;  
-   }  
- </style>  
-</head>  
-<body>     
 
-  <div class="container box">  
-   <form action="login.php" method="post" id="frmLogin"> 
-    <h3 align="center">Login</h3><br />
-    <div class="text-danger"><?php if(isset($message)) { echo $message; } ?></div>  
-    <div class="form-group">  
-     <label for="login">Username</label>  
-     <input name="member_name" type="text" value="<?php if(isset($_COOKIE["member_login"])) { echo $_COOKIE["member_login"]; } ?>" class="form-control" />  
-   </div>  
-   <div class="form-group">  
-     <label for="password">Password</label>  
-     <input name="member_password" type="password"class="form-control" />   
-   </div>  
-   <div class="form-group">  
-     <input type="checkbox" name="remember" <?php if(isset($_COOKIE["member_login"])) { ?> checked <?php } ?> />  
-     <label for="remember-me">Remember me</label>  
-   </div>  
-   <div class="form-group">  
-     <div><input type="submit" name="login" value="Login" class="btn btn-success"></span></div>  
-   </div>   
- </form>  
- <br />  
-</div>  
-</body>  
-</html>
-<?php } ?>
+<?php } else {
+header('location:login.php');
+ } ?>

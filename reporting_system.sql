@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2020 at 05:00 AM
+-- Generation Time: Jul 02, 2020 at 04:32 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.18
 
@@ -55,7 +55,6 @@ INSERT INTO `finish_report` (`uid`, `user_id`, `fdate`, `work_done`, `created_da
 CREATE TABLE `forget_password` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `hash_code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `status` int(3) NOT NULL,
   `created_date` datetime NOT NULL,
@@ -66,16 +65,19 @@ CREATE TABLE `forget_password` (
 -- Dumping data for table `forget_password`
 --
 
-INSERT INTO `forget_password` (`id`, `user_id`, `email`, `hash_code`, `status`, `created_date`, `updated_date`) VALUES
-(2, 2, '', 'b23d6daf1221617d', 1, '2020-06-29 13:34:20', '2020-06-29 13:34:20'),
-(4, 2, '', 'c86a7e848a6cf18d', 1, '2020-06-29 13:57:56', '2020-06-29 13:57:56'),
-(6, 2, '', '0035c51a363e56ea', 1, '2020-06-29 14:02:55', '2020-06-29 14:02:55'),
-(7, 2, '', '9a4c993983040ad5', 1, '2020-06-29 16:10:19', '2020-06-29 16:10:19'),
-(8, 2, '', '3f08cb5f2c998259', 1, '2020-07-01 08:52:26', '2020-07-01 08:52:26'),
-(9, 2, '', '32ef1fc5cd3eb8bc', 1, '2020-07-01 08:59:05', '2020-07-01 08:59:05'),
-(10, 2, '', '1ed5bffe9b03fa68', 1, '2020-07-01 09:13:14', '2020-07-01 09:13:14'),
-(11, 2, '', '43b223d05e86fb51', 1, '2020-07-01 09:15:08', '2020-07-01 09:15:08'),
-(12, 3, '', 'b781b9c3cd02a87b', 1, '2020-07-01 09:26:40', '2020-07-01 09:26:40');
+INSERT INTO `forget_password` (`id`, `user_id`, `hash_code`, `status`, `created_date`, `updated_date`) VALUES
+(2, 2, 'b23d6daf1221617d', 1, '2020-06-29 13:34:20', '2020-06-29 13:34:20'),
+(4, 2, 'c86a7e848a6cf18d', 1, '2020-06-29 13:57:56', '2020-06-29 13:57:56'),
+(6, 2, '0035c51a363e56ea', 1, '2020-06-29 14:02:55', '2020-06-29 14:02:55'),
+(7, 2, '9a4c993983040ad5', 1, '2020-06-29 16:10:19', '2020-06-29 16:10:19'),
+(8, 2, '3f08cb5f2c998259', 1, '2020-07-01 08:52:26', '2020-07-01 08:52:26'),
+(9, 2, '32ef1fc5cd3eb8bc', 1, '2020-07-01 08:59:05', '2020-07-01 08:59:05'),
+(10, 2, '1ed5bffe9b03fa68', 1, '2020-07-01 09:13:14', '2020-07-01 09:13:14'),
+(11, 2, '43b223d05e86fb51', 1, '2020-07-01 09:15:08', '2020-07-01 09:15:08'),
+(12, 3, 'b781b9c3cd02a87b', 1, '2020-07-01 09:26:40', '2020-07-01 09:26:40'),
+(13, 2, '75fd93b14b0127c4', 1, '2020-07-01 09:54:55', '2020-07-01 09:54:55'),
+(14, 2, '75fd93b14b0127c4', 1, '2020-07-01 09:56:56', '2020-07-01 09:56:56'),
+(15, 3, '8dd8623daaa86199', 1, '2020-07-01 17:33:13', '2020-07-01 17:33:13');
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,7 @@ INSERT INTO `plan_report` (`uid`, `user_id`, `ndate`, `morning_plan`, `evening_p
 (14, 2, '2020-06-12', 'morning plan', 'evening report', '2020-06-12 16:10:01', '2020-06-12 16:10:01'),
 (15, 2, '2020-06-15', 'Daily Report', 'Evening Report', '2020-06-15 16:06:34', '2020-06-15 16:06:34'),
 (16, 2, '2020-06-17', 'Morning Plan', 'Evening report', '2020-06-17 11:04:59', '2020-06-18 09:56:17'),
-(18, 3, '2020-06-17', 'morning report\r\n', 'evening report', '2020-06-17 18:55:14', '2020-06-17 18:55:14'),
+(18, 3, '2020-06-17', 'morning report\r\n', 'evening report', '2020-06-17 18:55:14', '2020-07-01 14:51:58'),
 (19, 2, '2020-06-18', 'morning report', 'evening reports', '2020-06-18 09:57:37', '2020-06-18 10:06:50'),
 (24, 2, '2020-06-18', 'Morning Plans', 'Evening finish', '2020-06-18 21:38:28', '2020-06-18 21:38:28'),
 (25, 2, '2020-06-18', 'morning reports 2', 'evening reports2', '2020-06-18 21:39:39', '2020-06-18 21:39:39');
@@ -140,8 +142,8 @@ CREATE TABLE `user_master` (
 --
 
 INSERT INTO `user_master` (`id`, `name`, `email`, `password`, `role`, `active`, `created_date`, `updated_date`) VALUES
-(2, 'zay', 'zaylinhtike1122@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, '2020-06-11 13:39:29', '2020-07-01 09:15:12'),
-(3, 'Ko Ko', 'koko@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1, '2020-06-11 13:40:06', '2020-07-01 09:26:40'),
+(2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, '2020-06-11 13:39:29', '2020-07-01 09:56:57'),
+(3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 1, '2020-06-11 13:40:06', '2020-07-01 17:33:13'),
 (4, 'Ma Ma', 'mama@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, '2020-06-11 13:40:30', '2020-06-15 13:40:45');
 
 --
@@ -186,7 +188,7 @@ ALTER TABLE `finish_report`
 -- AUTO_INCREMENT for table `forget_password`
 --
 ALTER TABLE `forget_password`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `plan_report`
