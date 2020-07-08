@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2020 at 04:32 AM
+-- Generation Time: Jul 08, 2020 at 08:05 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.18
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `reporting_system`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `city`
+--
+
+CREATE TABLE `city` (
+  `id` int(11) NOT NULL,
+  `city_name` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `city`
+--
+
+INSERT INTO `city` (`id`, `city_name`) VALUES
+(1, 'Yangon'),
+(2, 'Mandalay');
 
 -- --------------------------------------------------------
 
@@ -77,7 +96,9 @@ INSERT INTO `forget_password` (`id`, `user_id`, `hash_code`, `status`, `created_
 (12, 3, 'b781b9c3cd02a87b', 1, '2020-07-01 09:26:40', '2020-07-01 09:26:40'),
 (13, 2, '75fd93b14b0127c4', 1, '2020-07-01 09:54:55', '2020-07-01 09:54:55'),
 (14, 2, '75fd93b14b0127c4', 1, '2020-07-01 09:56:56', '2020-07-01 09:56:56'),
-(15, 3, '8dd8623daaa86199', 1, '2020-07-01 17:33:13', '2020-07-01 17:33:13');
+(15, 3, '8dd8623daaa86199', 1, '2020-07-01 17:33:13', '2020-07-01 17:33:13'),
+(16, 0, '', 1, '2020-07-07 13:06:03', '2020-07-07 13:06:03'),
+(17, 0, '', 1, '2020-07-07 13:10:12', '2020-07-07 13:10:12');
 
 -- --------------------------------------------------------
 
@@ -123,6 +144,75 @@ INSERT INTO `plan_report` (`uid`, `user_id`, `ndate`, `morning_plan`, `evening_p
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `profile_details`
+--
+
+CREATE TABLE `profile_details` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `phone_no` varchar(11) COLLATE utf8_unicode_ci NOT NULL,
+  `township` text COLLATE utf8_unicode_ci NOT NULL,
+  `city` text COLLATE utf8_unicode_ci NOT NULL,
+  `profile_image` varchar(350) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `township`
+--
+
+CREATE TABLE `township` (
+  `id` int(255) NOT NULL,
+  `city_id` int(11) NOT NULL,
+  `township_name` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `township`
+--
+
+INSERT INTO `township` (`id`, `city_id`, `township_name`) VALUES
+(1, 1, 'Ahlone'),
+(2, 1, 'Bahan'),
+(3, 1, 'Botahtaung\r\n'),
+(4, 1, 'Dagon Myothit(East)'),
+(5, 1, 'Dagon Myothit(North)'),
+(6, 1, 'Dagon Myothit(Seikkan)'),
+(7, 1, 'Dagon Myothit(South)'),
+(8, 1, 'Dawbon'),
+(9, 1, 'Hlaing'),
+(10, 1, 'Hlaingtharya'),
+(11, 1, 'Insein'),
+(12, 1, 'Kamaryut'),
+(13, 1, 'Kyauktada'),
+(14, 1, 'Kyeemyindaing'),
+(15, 1, 'Lanmadaw'),
+(16, 1, 'Latha'),
+(17, 1, 'Mayangone'),
+(18, 1, 'Mingaladon'),
+(19, 1, 'Mingalartaungnyunt'),
+(20, 1, 'North Okkalapa'),
+(21, 1, 'Pabedan'),
+(22, 1, 'Pazundaung'),
+(23, 1, 'Sanchaung'),
+(24, 1, 'Seikkan'),
+(25, 1, 'Shwepyithar'),
+(26, 1, 'South Okkalapa'),
+(27, 1, 'Tamwe'),
+(28, 1, 'Thaketa'),
+(29, 1, 'Thingangyun'),
+(30, 1, 'Yankin'),
+(31, 2, 'Amarapura'),
+(32, 2, 'Aungmyaythazan'),
+(33, 2, 'Chanayethazan'),
+(34, 2, 'Chanmyathazi'),
+(35, 2, 'Mahaaungmyay'),
+(36, 2, 'Patheingyi');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_master`
 --
 
@@ -142,13 +232,19 @@ CREATE TABLE `user_master` (
 --
 
 INSERT INTO `user_master` (`id`, `name`, `email`, `password`, `role`, `active`, `created_date`, `updated_date`) VALUES
-(2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, '2020-06-11 13:39:29', '2020-07-01 09:56:57'),
+(2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, '2020-06-11 13:39:29', '2020-07-08 09:27:38'),
 (3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 1, '2020-06-11 13:40:06', '2020-07-01 17:33:13'),
 (4, 'Ma Ma', 'mama@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, '2020-06-11 13:40:30', '2020-06-15 13:40:45');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `city`
+--
+ALTER TABLE `city`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `finish_report`
@@ -169,6 +265,18 @@ ALTER TABLE `plan_report`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `profile_details`
+--
+ALTER TABLE `profile_details`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `township`
+--
+ALTER TABLE `township`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_master`
 --
 ALTER TABLE `user_master`
@@ -177,6 +285,12 @@ ALTER TABLE `user_master`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `city`
+--
+ALTER TABLE `city`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `finish_report`
@@ -188,13 +302,25 @@ ALTER TABLE `finish_report`
 -- AUTO_INCREMENT for table `forget_password`
 --
 ALTER TABLE `forget_password`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `plan_report`
 --
 ALTER TABLE `plan_report`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `profile_details`
+--
+ALTER TABLE `profile_details`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `township`
+--
+ALTER TABLE `township`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user_master`

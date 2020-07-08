@@ -32,6 +32,7 @@ if(isset($_POST['login'])){
      session_start();
      $_SESSION['name']=$name;
      $_SESSION['id']=$row['id'];
+     $_SESSION['email']=$row['email'];
      
      header("location:adminpanel.php");
    }
@@ -57,6 +58,7 @@ if(isset($_POST['login'])){
    session_start();
    $_SESSION['name']=$name;
    $_SESSION['id']=$row['id'];
+   $_SESSION['email']=$row['email'];
    header("location:index.php");
  }
  else{
