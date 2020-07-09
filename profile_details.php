@@ -6,8 +6,8 @@ $id = $_POST['id'];
   	$row=mysqli_fetch_assoc($query);
   	$password=$row['password'];
  	if($pass!=$password){
- 		$message="Password is wrong";
- 		header("location:profile.php");
+ 		 $message= "Password is wrong";
+ 	
  	}
  	else{
 

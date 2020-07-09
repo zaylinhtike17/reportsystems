@@ -4,10 +4,12 @@ $auth =isset($_SESSION['auth']);
 $name =isset($_SESSION['name']);
 $id =isset($_SESSION['id']);
 $email =isset($_SESSION['email']);
-include ('db_controller.php');
+include ('config/db_controller.php');
 $uid=$_SESSION['id'];
 $sql="SELECT * FROM city";
 $cities=mysqli_query($conn,$sql);
+  $query=mysqli_query($conn,"SELECT * FROM user_master where id='$id'");
+    $row=mysqli_fetch_assoc($query);
 ?>
 <?php if ($auth) {?>
 <html>  
@@ -30,10 +32,6 @@ $cities=mysqli_query($conn,$sql);
      padding:20px;  
      background-color:#fff;  
    }  
-   .apply{
-    
-
-   }
  </style>  
 </head>  
 <body>     
@@ -45,11 +43,11 @@ $cities=mysqli_query($conn,$sql);
     <div class="form-group">  
    	<input type="hidden" name="id" id="id" value="<?php echo $_SESSION['id']?>"> 	
      <label for="name">Name</label>  
-     <input name="name" type="text" disabled="disabled" class="form-control" value="<?php echo $_SESSION['name']?>" />  
+     <input name="name" type="text" class="form-control" value="<?php echo $_SESSION['name']?>" />  
    </div>  
    <div class="form-group">  
      <label for="email">Email</label>  
-     <input name="email" type="text" disabled="disabled" class="form-control" value="<?php echo $_SESSION['email']?>"/>   
+     <input name="email" type="text" class="form-control" value="<?php echo $_SESSION['email']?>"/>   
    </div>  
    <div class="form-group">  
     <label for="phone">Phone No</label>
@@ -74,13 +72,12 @@ $cities=mysqli_query($conn,$sql);
     </div>
       <div class="form-group">  
     <label for="role">User Role</label>
-     <input type="text" id="role" name="role" disabled="disabled" class="form-control"/>   
+     <input type="text" id="role" name="role" class="form-control"/>   
    </div> 
       <div class="form-group">  
     <label for="photo">Profile Image</label>
      <input type="file" id="photo" name="photo" class="form-control"/>   
    </div> 
-   	<div class="text-danger"><?php?></div>
      <div class="form-group">  
      <input type="password" id="password" name="password" class="form-control" placeholder="type current password" required="required" />   
    </div> 

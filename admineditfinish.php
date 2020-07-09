@@ -6,7 +6,7 @@ $id =isset($_SESSION['id']);
 ?>
 <?php if ($auth) {?>
 <?php
-include("db_controller.php");
+include("config/db_controller.php");
 
 $id = $_SESSION['id'];
 $uid = $_GET['uid'];

@@ -1,5 +1,5 @@
 <?php
-include('db_controller.php');
+include('config/db_controller.php');
 
 $token=$_POST['token'];
 $user_id=$_POST['id'];

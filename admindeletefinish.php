@@ -1,5 +1,5 @@
 <?php
-include("db_controller.php");
+include("config/db_controller.php");
 if(!empty($_GET["uid"])) {
     $query = "DELETE FROM finish_report WHERE uid=".$_GET["uid"];
     $result = mysqli_query($conn,$query);

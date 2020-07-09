@@ -1,5 +1,5 @@
 <?php
-include("db_controller.php");
+include("config/db_controller.php");
  session_start();
 if(isset($_POST['login'])){
   if(!empty($_POST["member_name"]) && !empty($_POST["member_password"])){
@@ -59,7 +59,7 @@ if(isset($_POST['login'])){
    $_SESSION['name']=$name;
    $_SESSION['id']=$row['id'];
    $_SESSION['email']=$row['email'];
-   header("location:index.php");
+   header("location:../admin/index.php");
  }
  else{
   $message = "You are not allowed to login!";

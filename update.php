@@ -1,7 +1,7 @@
 <?php
 $name =isset($_SESSION['name']);
 $id =isset($_SESSION['id']);
-include("db_controller.php");
+include("config/db_controller.php");
 $id = $_SESSION['id'];
 	$uid = $_GET['uid'];
 	$date =$_POST['date'];
