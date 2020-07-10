@@ -1,5 +1,5 @@
 <?php
-include 'db_controller.php';
+include 'config/db_controller.php';
 $id = $_POST['id'];
 	$pass =md5( $_POST['password']);
   	$query=mysqli_query($conn,"SELECT * FROM user_master where id='$id'");

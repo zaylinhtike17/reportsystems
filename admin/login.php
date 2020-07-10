@@ -59,7 +59,7 @@ if(isset($_POST['login'])){
    $_SESSION['name']=$name;
    $_SESSION['id']=$row['id'];
    $_SESSION['email']=$row['email'];
-   header("location:../admin/index.php");
+   header("location:/member/index.php");
  }
  else{
   $message = "You are not allowed to login!";
@@ -115,7 +115,7 @@ else{
    }  
    .box  
    {  
-     width:500px;  
+     width:300px;  
      padding:20px;  
      background-color:#fff;  
    }  

@@ -1,12 +1,14 @@
 <?php
+require("config/db_controller.php");
 session_start();
 $auth =isset($_SESSION['auth']);
 $name =isset($_SESSION['name']);
 $id =isset($_SESSION['id']);
-include ('config/db_controller.php');
-$uid=$_SESSION['id'];
-$sql=mysqli_query($conn,"SELECT * FROM user_master as a INNER JOIN profile_details as b WHERE (a.id=b.user_id)");
-$row=mysqli_fetch_assoc($sql);
+$uid=$_REQUEST['id'];
+$query = mysqli_query($conn,"SELECT * FROM user_master INNER JOIN profile_details as b WHERE $uid=b.user_id") ;
+$rows=mysqli_fetch_assoc($query);
+
+
 ?>
 <?php if ($auth) {?>
 <html>  
@@ -19,9 +21,6 @@ $row=mysqli_fetch_assoc($sql);
 
   <style>
       .container {
-        width: auto;
-        height: auto;
-       
         margin:20px 50px 10px 50px;
       }
       .main{
@@ -37,6 +36,7 @@ $row=mysqli_fetch_assoc($sql);
         width: 50%;
       }
       #box2 {
+        
         margin-left:30px; 
         margin-top: 20px;
         width: 20%;
@@ -52,13 +52,26 @@ $row=mysqli_fetch_assoc($sql);
         padding: 10px;
         border-spacing:10px; 
       }
+         .modaltable td{
+        text-align:left;
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+      }
+
+/* Firefox */
+      input[type=number] {
+      -moz-appearance: textfield;
+      }
     </style>  
 </head>  
 <body>     
 <div>
-  <img src="storage/images/<?php echo $row['profile_image'] ?>" style="margin-left: 10px;"alt="" height="100" width="100"><br>
-  <label for="name">Name</label>
-   <span><?php echo $row['name']?></span>
+  <img src="storage/images/<?php echo $rows['profile_image'] ?>" style="margin-left: 10px;"alt="" height="100" width="100"><br>
+  
+   <span><?php echo $rows['name']?></span>
 </div>
 </body>  
 </html>
@@ -68,3 +81,4 @@ $row=mysqli_fetch_assoc($sql);
 <?php } else {
   header('location:login.php');
 } ?>
+

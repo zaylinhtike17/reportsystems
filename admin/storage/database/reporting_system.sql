@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2020 at 08:05 AM
+-- Generation Time: Jul 10, 2020 at 01:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.18
 
@@ -54,16 +54,6 @@ CREATE TABLE `finish_report` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `finish_report`
---
-
-INSERT INTO `finish_report` (`uid`, `user_id`, `fdate`, `work_done`, `created_date`, `updated_date`) VALUES
-(4, 2, '2020-06-15', 'Final Reports', '2020-06-12 16:17:11', '2020-06-18 10:49:18'),
-(5, 2, '2020-06-11', 'finish report', '2020-06-12 16:19:35', '2020-06-12 16:19:35'),
-(6, 2, '2020-06-18', 'Finish report', '2020-06-18 10:38:57', '2020-06-18 10:38:57'),
-(11, 3, '2020-06-19', 'Finish Report', '2020-06-19 08:15:04', '2020-06-19 08:15:04');
 
 -- --------------------------------------------------------
 
@@ -116,31 +106,6 @@ CREATE TABLE `plan_report` (
   `updated_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `plan_report`
---
-
-INSERT INTO `plan_report` (`uid`, `user_id`, `ndate`, `morning_plan`, `evening_plan`, `created_date`, `updated_date`) VALUES
-(1, 2, '2020-06-12', 'morning reports', 'evening reports', '0000-00-00 00:00:00', '2020-06-18 10:03:14'),
-(2, 2, '2020-06-11', 'morning report', 'evening report', '0000-00-00 00:00:00', '2020-06-12 15:32:24'),
-(3, 3, '2020-06-11', 'morning plan detail', 'evening plan detail', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(4, 2, '2020-06-11', 'morning report', 'morning report', '0000-00-00 00:00:00', '2020-06-12 08:21:04'),
-(5, 2, '2020-06-11', 'morning report', 'morning report', '0000-00-00 00:00:00', '2020-06-18 10:06:35'),
-(6, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:56:58', '2020-06-12 08:21:04'),
-(7, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:57:17', '2020-06-12 08:21:04'),
-(8, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:57:38', '2020-06-12 08:21:04'),
-(9, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:57:59', '2020-06-12 08:21:04'),
-(10, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:58:11', '2020-06-12 08:21:04'),
-(11, 2, '2020-06-11', 'morning report', 'morning report', '2020-06-11 16:58:30', '2020-06-12 08:21:04'),
-(13, 2, '2020-06-12', 'morning report', 'evening plans', '2020-06-12 10:30:46', '2020-06-17 11:09:05'),
-(14, 2, '2020-06-12', 'morning plan', 'evening report', '2020-06-12 16:10:01', '2020-06-12 16:10:01'),
-(15, 2, '2020-06-15', 'Daily Report', 'Evening Report', '2020-06-15 16:06:34', '2020-06-15 16:06:34'),
-(16, 2, '2020-06-17', 'Morning Plan', 'Evening report', '2020-06-17 11:04:59', '2020-06-18 09:56:17'),
-(18, 3, '2020-06-17', 'morning report\r\n', 'evening report', '2020-06-17 18:55:14', '2020-07-01 14:51:58'),
-(19, 2, '2020-06-18', 'morning report', 'evening reports', '2020-06-18 09:57:37', '2020-06-18 10:06:50'),
-(24, 2, '2020-06-18', 'Morning Plans', 'Evening finish', '2020-06-18 21:38:28', '2020-06-18 21:38:28'),
-(25, 2, '2020-06-18', 'morning reports 2', 'evening reports2', '2020-06-18 21:39:39', '2020-06-18 21:39:39');
-
 -- --------------------------------------------------------
 
 --
@@ -155,6 +120,13 @@ CREATE TABLE `profile_details` (
   `city` text COLLATE utf8_unicode_ci NOT NULL,
   `profile_image` varchar(350) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `profile_details`
+--
+
+INSERT INTO `profile_details` (`id`, `user_id`, `phone_no`, `township`, `city`, `profile_image`) VALUES
+(26, 2, '', '', '', '12.webp');
 
 -- --------------------------------------------------------
 
@@ -222,6 +194,7 @@ CREATE TABLE `user_master` (
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `role` int(11) NOT NULL,
+  `role_name` text COLLATE utf8_unicode_ci NOT NULL,
   `active` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL
@@ -231,10 +204,11 @@ CREATE TABLE `user_master` (
 -- Dumping data for table `user_master`
 --
 
-INSERT INTO `user_master` (`id`, `name`, `email`, `password`, `role`, `active`, `created_date`, `updated_date`) VALUES
-(2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1, '2020-06-11 13:39:29', '2020-07-08 09:27:38'),
-(3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 1, '2020-06-11 13:40:06', '2020-07-01 17:33:13'),
-(4, 'Ma Ma', 'mama@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, '2020-06-11 13:40:30', '2020-06-15 13:40:45');
+INSERT INTO `user_master` (`id`, `name`, `email`, `password`, `role`, `role_name`, `active`, `created_date`, `updated_date`) VALUES
+(2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'admin', 1, '2020-06-11 13:39:29', '2020-07-10 16:47:54'),
+(3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 'member', 1, '2020-06-11 13:40:06', '2020-07-10 16:49:15'),
+(4, 'Ma Ma', 'mama@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'member', 0, '2020-06-11 13:40:30', '2020-07-10 16:32:48'),
+(10, 'sss', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'member', 1, '2020-07-10 15:47:46', '2020-07-10 15:47:46');
 
 --
 -- Indexes for dumped tables
@@ -296,7 +270,7 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `finish_report`
 --
 ALTER TABLE `finish_report`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `forget_password`
@@ -308,13 +282,13 @@ ALTER TABLE `forget_password`
 -- AUTO_INCREMENT for table `plan_report`
 --
 ALTER TABLE `plan_report`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `profile_details`
 --
 ALTER TABLE `profile_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `township`
@@ -326,7 +300,7 @@ ALTER TABLE `township`
 -- AUTO_INCREMENT for table `user_master`
 --
 ALTER TABLE `user_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

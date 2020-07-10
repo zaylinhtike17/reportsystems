@@ -1,5 +1,5 @@
 <?php
-include ('db_controller.php');
+include ('config/db_controller.php');
 if($_GET['token'] && $_GET['user_id'])
 {
   $token=$_GET['token'];
