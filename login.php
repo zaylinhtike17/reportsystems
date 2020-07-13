@@ -34,7 +34,7 @@ if(isset($_POST['login'])){
      $_SESSION['id']=$row['id'];
      $_SESSION['name']=$row['name'];
      
-     header("location:admin/adminpanel.php");
+     header("location:admin/index.php");
    }
    elseif ($row['role']==2 && $row['active']==1) {
      if(isset($_POST['remember'])){

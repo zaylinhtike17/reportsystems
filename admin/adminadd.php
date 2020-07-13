@@ -14,6 +14,6 @@ $mplan =$_POST['mplan'];
 $eplan =$_POST['eplan'];
 $sql = "INSERT INTO plan_report (user_id, ndate,morning_plan,evening_plan,created_date,updated_date) VALUES ('$id','$date','$mplan','$eplan',now(),now())";
 mysqli_query($dbhandle, $sql);
-header("location: adminpanel.php");
+header("location: index.php");
 ?>
 

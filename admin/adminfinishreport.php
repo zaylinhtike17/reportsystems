@@ -58,7 +58,7 @@ mysqli_close($conn);
 						<!-- Trigger the modal with a button -->
 						<button type="button"  class="btn btn-info" data-toggle="modal" data-target="#myModal">ADD NEW</button>
 					
-						<button class="btn btn-info" style="float: right; color:"><a href="adminpanel.php" class="new" style="display: inline; text-align: center;color: white; text-decoration: none;">Go To Plan Report</a></button><br>
+						<button class="btn btn-info" style="float: right; color:"><a href="index.php" class="new" style="display: inline; text-align: center;color: white; text-decoration: none;">Go To Plan Report</a></button><br>
 						<div class="card-title">
 							<div class="card-body" >
 								<!-- Modal -->
