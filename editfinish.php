@@ -6,7 +6,7 @@ $id =isset($_SESSION['id']);
 ?>
 <?php if ($auth) {?>
 <?php
-include("db_controller.php");
+include("config/db_controller.php");
 
 $id = $_SESSION['id'];
 $uid = $_GET['uid'];
@@ -35,12 +35,10 @@ if(!empty($_POST["submit"])) {
 	<table align="center" style="width:50% ;height:40%; margin-top:50px; margin-left: 300px;" >
 
 		<tr>
-			<td><label for="id">User ID</label></td>
-			<td><input type="number" name="id" id="id" hidden="hidden"><?php echo $_SESSION['id']?></td>
+			<td><input type="hidden" name="id" id="id" value="<?php echo $_SESSION['id']?>"></td>
 		</tr>
 		<tr>
-			<td><label for="userid">ID</label></td>
-			<td><input type="number" name="userid" id="userid" hidden="hidden"><?php echo $row['uid']?></td></td>
+			<td><input type="hidden" name="userid" id="userid" value="<?php echo $row['uid']?>"></td></td>
 		</tr>
 		<tr>
 			<td><label for="date">Choose Date</label></td>

@@ -22,7 +22,7 @@ $row=mysqli_fetch_assoc($sql);
   <div class="conatiner">
         <h4 style="display: inline; margin:40px">Finish Report Form</h4><br>
         <label class="label" for="uname" style="font-size: 20px; color: blue; margin:10px 1px 10px 30px;"> Profile:</label>
-          <a href="profile.php" style="font-size: 20px; color: blue;text-align:left;"><?php echo $_SESSION['name']?> <img src="storage/images/<?php echo $row['profile_image'] ?>" style="margin-left: 10px;"alt="" height="25" width="30"></a></span>
+          <a href="profile.php" style="font-size: 20px; color: blue;text-align:left;"><?php echo $_SESSION['name']?> <img src="../storage/images/<?php echo $row['profile_image'] ?>" style="margin-left: 10px;"alt="" height="25" width="30"></a></span>
         <a href="logout.php" class="new" style="text-align: center; float: right;font-size: 15px; margin:10px 50px 10px 5px;">LOG OUT</a>
         <hr style="background-color:black;height: 3px;">
 

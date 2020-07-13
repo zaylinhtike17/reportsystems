@@ -8,6 +8,7 @@ include ('config/db_controller.php');
 $uid=$_SESSION['id'];
 $sql=mysqli_query($conn,"SELECT * FROM profile_details WHERE user_id='$uid'");
 $row=mysqli_fetch_assoc($sql);
+
 ?>
 <?php if ($auth) {?>
 <html>

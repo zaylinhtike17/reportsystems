@@ -2,8 +2,8 @@
 session_start();
 $auth =isset($_SESSION['auth']);
 $name =isset($_SESSION['name']);
-$email =isset($_SESSION['email']);
 $id =isset($_SESSION['id']);
+$email =isset($_SESSION['email']);
 include ('config/db_controller.php');
 $uid=$_SESSION['id'];
 $sql="SELECT * FROM city";
@@ -35,6 +35,7 @@ $cities=mysqli_query($conn,$sql);
  </style>  
 </head>  
 <body>     
+
   <div class="container box">  
    <form action="profile_details.php" method="post" enctype="multipart/form-data"> 
     <button type="button"  class="btn btn-success" data-toggle="modal" data-target="#myModal" style="float: right; font-size:12px; width:27%;display: inline;">Change Password</button>

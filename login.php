@@ -56,7 +56,7 @@ if(isset($_POST['login'])){
 
    }
    session_start();
-   $_SESSION['email']=$emil;
+   $_SESSION['email']=$email;
    $_SESSION['id']=$row['id'];
    $_SESSION['name']=$row['name'];
    header("location:index.php");
@@ -109,7 +109,7 @@ else{
   <style>  
     body  
     {  
-     margin:150px;  
+     margin:100px;  
      padding:0;  
      background-color:#f1f1f1;  
    }  

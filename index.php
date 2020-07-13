@@ -10,32 +10,26 @@ $id =isset($_SESSION['id']);
 include("config/db_controller.php");
 $id=$_SESSION['id'];
 
-if (isset($_GET['page'])) {
-  $page = $_GET['page'];
-} else {
-  $page = 1;
-}
+   $page=1;
+    if(isset($_GET['page'])){
+      $page =$_GET['page'];
+    }   
+    if ($page < 1) $page = 1;
+$resultsPerPage = 10;
+$startResults = ($page - 1) * $resultsPerPage;
 
-$num_results_on_page = 10;
-$offset = ($page-1) * $num_results_on_page;
         // Check connection
 if (mysqli_connect_errno()){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
   die();
 }
 
-
-$total_pages_sql = "SELECT COUNT(*) FROM plan_report WHERE user_id=$id";
-$result = mysqli_query($conn,$total_pages_sql);
-$total_pages = mysqli_fetch_array($result)[0];
-$total_rows = ceil($total_pages / $num_results_on_page);
-$sql = "SELECT * FROM plan_report WHERE user_id=$id ORDER BY ndate DESC LIMIT $offset, $num_results_on_page" ;
-$rows=$offset+1;
+$numberOfRows = mysqli_num_rows(mysqli_query($conn,'SELECT * FROM plan_report WHERE ndate'));
+$totalPages = ceil($numberOfRows / $resultsPerPage);
+$sql = "SELECT * FROM plan_report WHERE user_id=$id ORDER BY ndate DESC LIMIT $startResults, $resultsPerPage" ;
+$rows=$startResults+1;
 $res_data = mysqli_query($conn,$sql);
 mysqli_close($conn);
-
-
-
 
 ?>
 <html>
@@ -105,7 +99,7 @@ mysqli_close($conn);
   <table cellpadding="10" cellspacing="1" border="2"  style="margin-top:20px; height: auto;width:100%;" class="tablebody">
     <thead>
       <tr>
-        <th><strong>#</strong></th>
+        <th><strong>No.</strong></th>
         <th><strong>Date</strong></th>
         <th><strong>Morning Plan Details</strong></th>          
         <th><strong>Evening Plan Details</strong></th>
@@ -119,8 +113,8 @@ mysqli_close($conn);
     <?php while($row = mysqli_fetch_array($res_data)):?>
 
       <tr>
-        <td><?php echo $rows++;?></td>
-        <td><?php echo $row['ndate'];?></td>
+        <td style="width:50px;height: 50px ;text-align:center;"><?php echo $rows++;?></td>
+        <td style="width:50px;height: 50px ;text-align:center;"><?php echo $row['ndate'];?></td>
         <td style="width:35%;"><?php echo $row['morning_plan'];?></td>
         <td style="width:35%;"><?php echo $row['evening_plan'];?></td>
         <td>
@@ -132,37 +126,34 @@ mysqli_close($conn);
 
   </table>
 
+ <div class="row ctr">
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <?php
+              echo '<li><a href="?page=1">First</a></li>';
 
-  <?php if (ceil($total_pages / $num_results_on_page) > 0): ?>
-    <ul class="pagination">
-     <?php if ($page > 1): ?>
-      <li class="prev"><a href="index.php?page=<?php echo $page-1 ?>">Prev</a></li>
-    <?php endif; ?>
-    <?php if ($page > 3): ?>
-      <li class="start"><a href="index.php?page=1">1</a></li>
-      <li class="dots">...</li>
-    <?php endif; ?>
+              if($page > 1)
+                echo '<li><a href="adminpanel.php?page='.($page - 1).'">&laquo;</a></li>';
 
-    <?php if ($page-2 > 0): ?><li class="page"><a href="index.php?page=<?php echo $page-2 ?>"><?php echo $page-2 ?></a></li><?php endif; ?>
-    <?php if ($page-1 > 0): ?><li class="page"><a href="index.php?page=<?php echo $page-1 ?>"><?php echo $page-1 ?></a></li><?php endif; ?>
+              for($i = max(1, $page - 3); $i <= min($page + 3, $totalPages); $i++)
+              {
+                if($i == $page)
+                  echo '<li><a href="#" class="active" style="background:#262424;color:white;"><strong>'.$i.'</strong></a></li>';
+                else
+                  echo '<li><a href="adminpanel.php?page='.$i.'">'.$i.'</a></li>';
+              }
 
-    <li class="currentpage"><a href="index.php?page=<?php echo $page ?>"><?php echo $page ?></a></li>
+              if ($page < $totalPages)
+                echo '<li><a href="adminpanel.php?page='.($page + 1).'">&raquo;</a></li>';
 
-    <?php if ($page+1 < ceil($total_pages / $num_results_on_page)+1): ?><li class="page"><a href="index.php?page=<?php echo $page+1 ?>"><?php echo $page+1 ?></a></li><?php endif; ?>
-    <?php if ($page+2 < ceil($total_pages / $num_results_on_page)+1): ?><li class="page"><a href="index.php?page=<?php echo $page+2 ?>"><?php echo $page+2 ?></a></li><?php endif; ?>
+              echo '<li><a href="?page='.$totalPages.'">Last</a></li>';
 
-    <?php if ($page < ceil($total_pages / $num_results_on_page)-2): ?>
-      <li class="dots">...</li>
-      <li class="end"><a href="index.php?page=<?php echo ceil($total_pages / $num_results_on_page) ?>"><?php echo ceil($total_pages / $num_results_on_page) ?></a></li>
-    <?php endif; ?>
+              ?>
+            </ul>  
+          </nav>
+        </div>
 
-    <?php if ($page < ceil($total_pages / $num_results_on_page)): ?>
-      <li class="next"><a href="index.php?page=<?php echo $page+1 ?>">Next</a></li>
-    <?php endif; ?>
-  </ul>
-<?php endif; ?>
-
-</div>
+      </div> 
 
 
 </body>
