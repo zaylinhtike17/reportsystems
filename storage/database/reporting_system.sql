@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 10, 2020 at 01:06 PM
+-- Generation Time: Jul 14, 2020 at 03:58 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.18
 
@@ -55,6 +55,15 @@ CREATE TABLE `finish_report` (
   `updated_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `finish_report`
+--
+
+INSERT INTO `finish_report` (`uid`, `user_id`, `fdate`, `work_done`, `created_date`, `updated_date`) VALUES
+(15, 2, '2020-07-13', 'finish', '2020-07-13 14:59:02', '2020-07-13 14:59:02'),
+(16, 3, '2020-07-13', 'aaaafdfdfdf', '2020-07-13 14:59:33', '2020-07-13 16:36:20'),
+(17, 3, '2020-07-13', 'fdfdfdfdfdf', '2020-07-13 16:36:41', '2020-07-13 16:36:41');
+
 -- --------------------------------------------------------
 
 --
@@ -88,7 +97,8 @@ INSERT INTO `forget_password` (`id`, `user_id`, `hash_code`, `status`, `created_
 (14, 2, '75fd93b14b0127c4', 1, '2020-07-01 09:56:56', '2020-07-01 09:56:56'),
 (15, 3, '8dd8623daaa86199', 1, '2020-07-01 17:33:13', '2020-07-01 17:33:13'),
 (16, 0, '', 1, '2020-07-07 13:06:03', '2020-07-07 13:06:03'),
-(17, 0, '', 1, '2020-07-07 13:10:12', '2020-07-07 13:10:12');
+(17, 0, '', 1, '2020-07-07 13:10:12', '2020-07-07 13:10:12'),
+(18, 3, '70565fc06cd5463d', 1, '2020-07-13 13:29:51', '2020-07-13 13:29:51');
 
 -- --------------------------------------------------------
 
@@ -105,6 +115,14 @@ CREATE TABLE `plan_report` (
   `created_date` datetime NOT NULL,
   `updated_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `plan_report`
+--
+
+INSERT INTO `plan_report` (`uid`, `user_id`, `ndate`, `morning_plan`, `evening_plan`, `created_date`, `updated_date`) VALUES
+(2, 2, '2020-07-13', 'morn', 'eve', '2020-07-13 14:58:44', '2020-07-13 14:58:44'),
+(4, 3, '2020-07-13', 'dfdf', 'fdfdf', '2020-07-13 16:35:22', '2020-07-13 16:35:22');
 
 -- --------------------------------------------------------
 
@@ -126,7 +144,10 @@ CREATE TABLE `profile_details` (
 --
 
 INSERT INTO `profile_details` (`id`, `user_id`, `phone_no`, `township`, `city`, `profile_image`) VALUES
-(26, 2, '', '', '', '12.webp');
+(26, 2, '', '', '', '12.webp'),
+(27, 2, '', '', '', 'man-avatar-profile-vector-21372076.jpg'),
+(29, 3, '', '', '', 'man-avatar-profile-vector-21372076.jpg'),
+(30, 3, '', '', '', 'man-avatar-profile-vector-21372076.jpg');
 
 -- --------------------------------------------------------
 
@@ -206,7 +227,7 @@ CREATE TABLE `user_master` (
 
 INSERT INTO `user_master` (`id`, `name`, `email`, `password`, `role`, `role_name`, `active`, `created_date`, `updated_date`) VALUES
 (2, 'zay', 'zaylinhtike1122@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'admin', 1, '2020-06-11 13:39:29', '2020-07-10 16:47:54'),
-(3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 2, 'member', 1, '2020-06-11 13:40:06', '2020-07-10 16:49:15'),
+(3, 'Ko Ko', 'capital.zaylinhtike@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'member', 1, '2020-06-11 13:40:06', '2020-07-13 13:29:52'),
 (4, 'Ma Ma', 'mama@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'member', 0, '2020-06-11 13:40:30', '2020-07-10 16:32:48'),
 (10, 'sss', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 2, 'member', 1, '2020-07-10 15:47:46', '2020-07-10 15:47:46');
 
@@ -270,25 +291,25 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT for table `finish_report`
 --
 ALTER TABLE `finish_report`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `forget_password`
 --
 ALTER TABLE `forget_password`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `plan_report`
 --
 ALTER TABLE `plan_report`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `profile_details`
 --
 ALTER TABLE `profile_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `township`
